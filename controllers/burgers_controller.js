@@ -5,13 +5,22 @@ const burgz = require('../models/burger.js')
 
 router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
-    burgz.all(function () {
-        console.table(res)
-    })
-    console.log(req)
-    console.log(res)
-
 })
+
+router.get('/burger', function(req, res){
+    burgz.all(function(infoFromDatabase){
+        res.json({allInfo:infoFromDatabase})
+    })
+})
+
+
+
+
+
+
+
+
+
 
 
 
