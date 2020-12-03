@@ -12,11 +12,7 @@ h1 {
 .food {
     margin-top: 80px;
 }
-.move{
-    text-align: center;
-    display: flex;
-   
-}
+
 .show{
     padding: 10px;
 }
