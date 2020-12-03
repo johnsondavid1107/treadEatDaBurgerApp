@@ -7,20 +7,20 @@ $(document).ready(function(){
         // console.log(res.allInfo[2].id)
         console.log(res.allInfo.length)
         let devourSection = $('#devour');
+        let divRow = $("<div>").addClass("row")
+        let divCol9 = $("<div>").addClass("col-md-9")
+        let divCol3 = $("<div>").addClass("col-md-3")
 
         let allInfo = res.allInfo
 
         for (let i = 0; i < allInfo.length; i++){
-            let element = 
-            "<li>"+allInfo[i].id+
-            ". "+allInfo[i].burger_name+
-           "   <button type='button' class='btn btn-primary move'>Devour</button>";
-
-           devourSection.append(element)
+           devourSection.append("<div class=row id="+i+"x><div class='col-md-9 text-center'><li class=show>"+allInfo[i].id+". "+allInfo[i].burger_name)
+           $("#" +i).append("<div class=col-md-3><button class='btn btn-primary'>" +"Devour")
 
         }
 
 
+    
        
 
 
