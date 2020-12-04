@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const burgz = require('../models/burger.js')
+const burgz = require('../models/burger.js');
+const { json } = require('express');
 
 
 router.get('/', function (req, res) {
@@ -11,6 +12,11 @@ router.get('/burger', function(req, res){
     burgz.all(function(infoFromDatabase){
         res.json({allInfo:infoFromDatabase})
     })
+});
+
+router.post('/burger', function(req, res) {
+    console.log(req.body.name)
+
 })
 
 

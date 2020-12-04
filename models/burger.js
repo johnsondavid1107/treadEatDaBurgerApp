@@ -7,6 +7,7 @@ let burger = {
             cb(res);
         });
     },
+    creat: function(){}
 
 
 

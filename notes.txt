@@ -1,0 +1,7 @@
+Need to make sure all burgers entered are default (NOT DEVOURED).
+
+WHen user submits burger(by clicking on submit button), burger is entered into table and is set to not devoured.  Then it will show up on page. 
+
+When user clicks on button next to burger, get the ID of that button 'data value" and turn the burger in the table to devoured.
+
+Deleted section on the page will populate all burgers that are devoured only.  Once the delete button is pressed there, it wil delete from the database. 

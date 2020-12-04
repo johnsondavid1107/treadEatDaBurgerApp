@@ -16,22 +16,45 @@ $(document).ready(function () {
             $("#" + i).append("<div class=col-md-3><button class='btn btn-primary burgerBtn'data="+allInfo[i].id+">" + "Devour")
 
         }
-
-
-
-
     })
-
-
-
     $('.clickBtn').on("click",".burgerBtn", function (event) {
         let id = $(event.target).attr("data")
         console.log(id)
         console.log("This was clicked");
     })
 
+    $("#userSbmtBtn").on("click", function(event){
+        event.preventDefault();
+
+        let burgerEntry = {
+            name: $("#entryField").val().trim(),
+            devoured: false
+
+        } 
 
 
+        $("#entryField").val('');
+        
+        console.log(burgerEntry)
+
+        $.ajax("/burger", {
+            type: "POST",
+            data: burgerEntry,
+            dataType: "json"
+
+
+        }).then(function () {
+            console.log(burgerEntry, "line41")
+            
+
+        })
+
+       
+
+        
+
+        
+    })
 
 
 

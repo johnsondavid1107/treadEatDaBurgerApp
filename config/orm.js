@@ -13,6 +13,32 @@ let orm = {
 
 
     },
+    create: function (tableName, column, value, cb) {
+        let queryString = "INSERT INTO " + tableName;
+
+        queryString += "(";
+        queryString += column.toString();
+        queryString += ") VALUES ("
+        queryString += value.toString();
+        queryString += ");"
+
+        console.log(queryString, "from ORM.js line25");
+
+        connection.query(queryString, value, function(err, res) {
+            if (err) {
+                throw err;
+            }
+
+            cb(res);
+        })
+
+
+
+
+
+
+
+    }
 
 
 
