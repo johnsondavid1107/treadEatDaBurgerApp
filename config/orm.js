@@ -24,24 +24,30 @@ let orm = {
         queryString += "');"
 
         console.log(queryString, "from ORM.js line26");
-        console.log(column,"ORM line27")
+        console.log(column, "ORM line27")
         console.log(value, "ORM line 28")
 
-        connection.query(queryString, value, function(err, res) {
+        connection.query(queryString, value, function (err, res) {
             if (err) {
                 throw err;
             }
 
             cb(res);
         })
+    },
+    update: function (id, cb) {
+        let queryString = `UPDATE burgers SET devoured = true WHERE id = ${id}`
+        connection.query(queryString, function(err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        })
+
+    },
 
 
-
-
-
-
-
-    }
+ 
 
 
 

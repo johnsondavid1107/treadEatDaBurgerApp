@@ -8,4 +8,15 @@ Deleted section on the page will populate all burgers that are devoured only.  O
 
 
 
-How does line 17 in orm.js know what the column name is from MYSQL?
+How does line 17 in orm.js know what the column name is from MYSQL? (DISREGARD< ANSWERED MY OWN QUESTION.)**it is coming from the object I built burgerEntry from the client js file.
+-------------------------------------------------------------------------------
+
+Questions
+
+How do we fix sending an empty string to the database?
+
+Can we fix the get method in the client JS to create a new row with two columns for both the burger name and the button?
+
+Need to work on Update function?
+
+Need to work on delete funciton?

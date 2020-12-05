@@ -23,6 +23,13 @@ router.post('/burger', function(req, res) {
     // console.log(req.body.col);
     // console.log(req.body.val)
 
+});
+
+router.put("/burger/:id",function(req, res) {
+    burgz.update(req.params.id, function(res) {
+        console.log(res, "line31 controller")
+    
+    })
 })
 
 
