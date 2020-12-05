@@ -17,6 +17,5 @@ How do we fix sending an empty string to the database?
 
 Can we fix the get method in the client JS to create a new row with two columns for both the burger name and the button?
 
-Need to work on Update function?
 
 Need to work on delete funciton?

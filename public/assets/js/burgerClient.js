@@ -47,7 +47,6 @@ $(document).ready(function () {
 
         }
 
-
         $("#entryField").val('');
 
         console.log(burgerEntry)
@@ -57,17 +56,20 @@ $(document).ready(function () {
             data: burgerEntry,
             dataType: "json"
 
-
         }).then(function () {
             console.log(burgerEntry, "line41")
 
 
+        });
+        $.ajax("/burger", {
+            type: "GET",
+        }).then(function (res){
+            // let devourSection = $('#devour');
+            // devourSection.appendChild()
+            
+            let lastEntry = res.allInfo[res.allInfo.length-1]
+            console.log(lastEntry.id)
         })
-
-
-        
-
-
 
     })
 
