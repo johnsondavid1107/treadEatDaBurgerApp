@@ -5,3 +5,7 @@ WHen user submits burger(by clicking on submit button), burger is entered into t
 When user clicks on button next to burger, get the ID of that button 'data value" and turn the burger in the table to devoured.
 
 Deleted section on the page will populate all burgers that are devoured only.  Once the delete button is pressed there, it wil delete from the database. 
+
+
+
+How does line 17 in orm.js know what the column name is from MYSQL?

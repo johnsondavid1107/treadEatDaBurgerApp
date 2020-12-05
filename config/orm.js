@@ -8,6 +8,7 @@ let orm = {
         connection.query(queryString, [tableInfo], function (err, res) {
             if (err) { throw err };
             console.log('Successfully sent table from database from orm.js line 10');
+            console.log(tableInfo)
             cb(res);
         })
 
@@ -18,11 +19,13 @@ let orm = {
 
         queryString += "(";
         queryString += column.toString();
-        queryString += ") VALUES ("
+        queryString += ") VALUES ('"
         queryString += value.toString();
-        queryString += ");"
+        queryString += "');"
 
-        console.log(queryString, "from ORM.js line25");
+        console.log(queryString, "from ORM.js line26");
+        console.log(column,"ORM line27")
+        console.log(value, "ORM line 28")
 
         connection.query(queryString, value, function(err, res) {
             if (err) {

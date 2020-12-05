@@ -27,8 +27,8 @@ $(document).ready(function () {
         event.preventDefault();
 
         let burgerEntry = {
-            name: $("#entryField").val().trim(),
-            devoured: false
+            col: "burger_name",
+            val:$("#entryField").val().trim()
 
         } 
 

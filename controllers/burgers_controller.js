@@ -15,7 +15,13 @@ router.get('/burger', function(req, res){
 });
 
 router.post('/burger', function(req, res) {
-    console.log(req.body.name)
+    burgz.create(req.body.col,req.body.val, function(res) {
+        console.log(res, "line19 of controller")
+    })
+
+
+    // console.log(req.body.col);
+    // console.log(req.body.val)
 
 })
 
