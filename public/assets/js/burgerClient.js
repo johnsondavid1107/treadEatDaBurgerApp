@@ -1,40 +1,40 @@
 $(document).ready(function () {
-    let callBurger = function () {
-        $.ajax("/burger", {
-            type: "GET"
-        }).then(function (res) {
-            console.log(res)
-            // console.log(res.allInfo[2].id)
-            console.log(res.allInfo.length)
-            let devourSection = $('#devour');
+
+    $.ajax("/burger", {
+        type: "GET"
+    }).then(function (res) {
 
 
-            let allInfo = res.allInfo
+        let devourSection = $('#devour');
 
-            for (let i = 0; i < allInfo.length; i++) {
+
+        let allInfo = res.allInfo
+
+        for (let i = 0; i < allInfo.length; i++) {
+            if (res.allInfo[i].devoured === 0) {
                 devourSection.append("<div class=row id=" + i + "><div class='col-md-9 text-center'><li class=show>" + allInfo[i].id + ". " + allInfo[i].burger_name)
                 $("#" + i).append("<div class=col-md-3><button class='btn btn-primary burgerBtn'data=" + allInfo[i].id + ">" + "Devour")
+            }
+        }
+
+        for (let i = 0; i < allInfo.length; i++) {
+
+            if (res.allInfo[i].devoured === 1) {
+                console.log(res.allInfo[i])
+
+                let deleteSection = $("#delete");
+                deleteSection.append("<div class=row><div class='col-md-9 text-center' id=delete" + res.allInfo[i].id + "><li class=show>" +
+                    res.allInfo[i].id + ". " + res.allInfo[i].burger_name);
+
+                $("#delete" + res.allInfo[i].id).after(
+                    "<div class=col-md-3><button class='btn btn-danger burgerBtn'data=" + res.allInfo[i].id + ">" + "Delete");
+
 
             }
-
-            for (let i = 0; i < allInfo.length; i++) {
-
-                if (res.allInfo[i].devoured === 1) {
-                    console.log(res.allInfo[i])
-
-                    let deleteSection = $("#delete");
-                    deleteSection.append("<div class=row><div class='col-md-9 text-center' id=delete" + res.allInfo[i].id + "><li class=show>" +
-                        res.allInfo[i].id + ". " + res.allInfo[i].burger_name);
-
-                    $("#delete" + res.allInfo[i].id).after(
-                        "<div class=col-md-3><button class='btn btn-danger burgerBtn'data=" + res.allInfo[i].id + ">" + "Delete");
+        }
+    })
 
 
-                }
-            }
-        })
-    }
-    callBurger();
 
     $('.clickBtn').on("click", ".burgerBtn", function (event) {
         let id = $(event.target).attr("data")
@@ -49,29 +49,25 @@ $(document).ready(function () {
             console.log("Success")
         })
 
-        $.ajax("/burger/", {
-            type: "GET"
+        $("#" + (parseInt(id - 1))).empty();
+        console.log(parseInt(id - 1))
+        location.reload();
+
+
+
+
+    });
+
+    $('clickBtn').on("click", ".deleteBtn", function (event) {
+        let id = $(event.target).attr("data")
+
+        $.ajax("/burger/" + id, {
+            type: "DELETE"
         }).then(function (res) {
             console.log(res)
-
-
-
-
-
-
-
-
+            $("#" + (id - 1)).empty();
 
         })
-
-        // $
-
-
-
-
-
-
-
     })
 
 
@@ -105,6 +101,7 @@ $(document).ready(function () {
         $.ajax("/burger", {
             type: "GET",
         }).then(function (res) {
+
             let devourSection = $('#devour');
             // devourSection.appendChild()
 
