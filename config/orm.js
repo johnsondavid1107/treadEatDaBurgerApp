@@ -1,4 +1,5 @@
 const connection = require('./connection.js');
+const { query } = require('express');
 
 
 let orm = {
@@ -37,7 +38,7 @@ let orm = {
     },
     update: function (id, cb) {
         let queryString = `UPDATE burgers SET devoured = true WHERE id = ${id}`
-        connection.query(queryString, function(err, res) {
+        connection.query(queryString, function (err, res) {
             if (err) {
                 throw err;
             }
@@ -45,9 +46,21 @@ let orm = {
         })
 
     },
+    delete: function (table, cond, cb) {
+        var queryString = "DELETE FROM " + table;
+        queryString += " WHERE ";
+        queryString += cond;
+
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
+            cb(result)
+        })
+    }
 
 
- 
+
 
 
 

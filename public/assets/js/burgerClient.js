@@ -27,7 +27,7 @@ $(document).ready(function () {
                     res.allInfo[i].id + ". " + res.allInfo[i].burger_name);
 
                 $("#delete" + res.allInfo[i].id).after(
-                    "<div class=col-md-3><button class='btn btn-danger burgerBtn'data=" + res.allInfo[i].id + ">" + "Delete");
+                    "<div class=col-md-3><button class='btn btn-danger deleteBtn'data=" + res.allInfo[i].id + ">" + "Delete");
 
 
             }
@@ -36,6 +36,7 @@ $(document).ready(function () {
 
 
 
+    //________________________________________________________
     $('.clickBtn').on("click", ".burgerBtn", function (event) {
         let id = $(event.target).attr("data")
         console.log(id)
@@ -58,19 +59,22 @@ $(document).ready(function () {
 
     });
 
-    $('clickBtn').on("click", ".deleteBtn", function (event) {
+    //________________________________________________________
+    $('.clickBtn').on("click", ".deleteBtn", function (event) {
         let id = $(event.target).attr("data")
+        console.log(id, 'line65')
 
         $.ajax("/burger/" + id, {
             type: "DELETE"
         }).then(function (res) {
             console.log(res)
-            $("#" + (id - 1)).empty();
+            $("#delete" + id).empty();
 
         })
+        location.reload();
     })
 
-
+    //________________________________________________________
     $("#userSbmtBtn").on("click", function (event) {
         event.preventDefault();
         if (!$("#entryField").val()) {
